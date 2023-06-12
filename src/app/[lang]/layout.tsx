@@ -1,8 +1,5 @@
-import { getDictionary } from '@/common/helpers/get-dictionary';
 import { type Locale, i18n } from '@/i18n-config';
 import { Inter } from 'next/font/google';
-import { NextIntlClientProvider } from 'next-intl';
-import { type FC } from 'react';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -23,18 +20,13 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-const RootLayout: FC<IRootLayout> = async ({ children, params }) => {
-  const dictionary = await getDictionary(params.lang);
-
+export default async function RootLayout({ children, params }: IRootLayout) {
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <NextIntlClientProvider locale={params.lang} messages={dictionary}>
-          {children}
-        </NextIntlClientProvider>
+        {children}
+        {children}
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

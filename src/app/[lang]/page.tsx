@@ -9,7 +9,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
   return (
     <main className={styles.main}>
       <p>Server component: {translation.title}</p>
-      <Test />
+      {/*<Test />*/}
     </main>
   );
 }

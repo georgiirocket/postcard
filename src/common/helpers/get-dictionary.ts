@@ -8,4 +8,13 @@ const dictionaries = {
   ru: () => import('../../assets/locales/ru.json').then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) => dictionaries[locale]();
+export const getDictionary = async (locale: Locale) => {
+  switch (locale) {
+    case 'ru':
+      return dictionaries['ru']();
+    default:
+      return dictionaries['en']();
+  }
+};
+
+export type IDictionary = typeof dictionaries.en;

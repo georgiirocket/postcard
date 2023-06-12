@@ -1,11 +1,15 @@
 'use client';
+import type { IDictionary } from '@/common/helpers/get-dictionary';
 import { i18n } from '@/i18n-config';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { FC } from 'react';
 
-const Test = () => {
-  const t = useTranslations('translation');
+interface ITest {
+  dictionary: IDictionary;
+}
+
+const Test: FC<ITest> = ({ dictionary }) => {
   const pathName = usePathname();
 
   const redirectedPathName = (locale: string) => {
@@ -18,7 +22,7 @@ const Test = () => {
 
   return (
     <div>
-      <p>Client component: {t('title')}</p>
+      <p>Client component:</p>
       <div>
         <p>Locale switcher:</p>
         <ul>
