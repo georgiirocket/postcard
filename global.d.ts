@@ -1,2 +1,2 @@
-type Messages = typeof import('./src/assets/locales/en.json');
-declare interface IntlMessages extends Messages {}
+export type IMessages = typeof import('./messages/en.json');
+declare interface IntlMessages extends IMessages {}

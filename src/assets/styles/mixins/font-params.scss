@@ -1,0 +1,12 @@
+@mixin font-params($font-size, $line-height, $font-weight: false, $color: false) {
+  font-size: $font-size;
+  line-height: $line-height;
+
+  @if ($font-weight) {
+    font-weight: $font-weight;
+  }
+
+  @if ($color) {
+    color: $color;
+  }
+}
