@@ -1,4 +1,7 @@
+import { THEME } from '@/common/interfaces/i-theme';
+import { themeNameProperty } from '@/constans';
 import { Inter } from 'next/font/google';
+import { cookies } from 'next/headers';
 import { NextIntlClientProvider } from 'next-intl';
 import { type FC } from 'react';
 import './globals.scss';
@@ -21,9 +24,10 @@ export const metadata = {
 
 const RootLayout: FC<IRootLayout> = async ({ children, params }) => {
   const messages = (await import(`../../../messages/${params.locale}.json`)).default;
+  const theme = cookies().get(themeNameProperty)?.value ?? THEME.dark;
 
   return (
-    <html lang={params.locale}>
+    <html lang={params.locale} className={theme}>
       <body className={inter.className}>
         <NextIntlClientProvider locale={params.locale} messages={messages}>
           {children}

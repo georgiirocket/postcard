@@ -1,4 +1,5 @@
 import { ITheme } from '@/common/interfaces/i-theme';
+import { themeNameProperty } from '@/constans';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -13,6 +14,7 @@ const useThemeStore = create<IThemeStore>()(
       theme: 'dark',
       setTheme: (theme) =>
         set((state) => {
+          document.cookie = `${themeNameProperty}=${theme}`;
           return { theme: theme };
         }),
     }),
